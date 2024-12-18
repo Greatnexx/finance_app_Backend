@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "CommonJS",
+    "lib": ["es6"],
+    "allowJs": true,
+    "outDir": "build",
+    "rootDir": "src",
+    "strict": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+
+   
+    "baseUrl": "./",
+    /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    "paths": {
+      // "GQL/*": ["src/prisma/*"],
+      // "Resolvers/*": ["src/resolvers/*"],
+      // "Schema/*": ["src/schema/*"],
+      "Controllers/*": ["src/Controllers/*"],
+      "Middlewares/*": ["src/middlewares/*"],
+      "Routers/*": ["src/routes/*"],
+      "Utils/*": ["src/utils/*"],
+      "Interfaces/*": ["src/interfaces/*"],
+      "Services/*": ["src/services/*"]
+    },
+    "rootDirs": [
+      "src"
+    ] /* List of root folders whose combined content represents the structure of the project at runtime. */
+  },
+ 
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.test*"]
+}

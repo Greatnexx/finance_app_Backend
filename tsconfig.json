@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "ES6",
     "module": "CommonJS",
     "lib": ["es6"],
     "allowJs": true,
-    "outDir": "build",
+    "outDir": "dist",
     "rootDir": "src",
     "strict": true,
     "noImplicitAny": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "sourceMap": true,
 
 
    

@@ -1,20 +1,21 @@
 {
   "name": "finance_manager",
   "version": "1.0.0",
- "scripts": {
-  "start": "node build/server.js",
-   "dev": "nodemon src/server.ts",
-  "build": "tsc",
-  "prestart": "npm run build",
-  "test": "echo \"Error: no test specified\" && exit 1"
- 
-},
-
+  "main": "server.ts",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint"
+  },
   "keywords": [],
   "author": "IDOGA DANIEL",
   "license": "ISC",
   "description": "A personal finance manager app that allows users manages thier finaces effectively",
   "dependencies": {
+    "@vercel/node": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

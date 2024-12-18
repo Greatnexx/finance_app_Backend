@@ -11,6 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
+app.use("/test", async(req, res) => {
+    res.send("Hello from server")
+})
+
 
 app.use('/api',userRoutes)
 app.use('/api/budgets',BudgetRoutes)

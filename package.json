@@ -2,9 +2,10 @@
   "name": "finance_manager",
   "version": "1.0.0",
  "scripts": {
-  "start": "nodemon server.ts",
+  "start": "node build/server.js",
    "dev": "nodemon src/server.ts",
   "build": "tsc",
+  "prestart": "npm run build",
   "test": "echo \"Error: no test specified\" && exit 1"
  
 },

@@ -13,6 +13,7 @@ export const createTransaction = asyncHandler(async(req:CustomRequest,res:Respon
         category: "string|required",
         narration: "string|required",
         budget_id: "string",
+        type: "string|required"
 
     },{...req?.body})
 
@@ -23,7 +24,7 @@ export const createTransaction = asyncHandler(async(req:CustomRequest,res:Respon
          return;
     }
 
-    const {amount, category, narration, budget_id} = req.body;
+    const {amount, category, narration, budget_id,type} = req.body;
     const user_id = req?.user?._id;
 
     if(!user_id){
@@ -36,6 +37,7 @@ export const createTransaction = asyncHandler(async(req:CustomRequest,res:Respon
         category,
         narration,
         budget_id,
+         type,
          user_id
     })
 

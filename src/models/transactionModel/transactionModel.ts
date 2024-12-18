@@ -9,7 +9,6 @@ const transactionSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ["income", "expense"], 
       required: true, 
     },
     narration: {
@@ -24,8 +23,13 @@ const transactionSchema = new mongoose.Schema(
     },
     user_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", 
+      ref: "User ", 
       required: true, 
+    },
+    type: {
+      type: String,
+      required: true,
+      enum: ['expense', 'income'], 
     },
   },
   {

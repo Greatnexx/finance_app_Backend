@@ -13,7 +13,8 @@ export const getAllTransactions = asyncHandler(async (req:CustomRequest, res:Res
 
   const user_id = req?.user?._id;
 
-  const allowedFilters:any = ["createdAt","updatedAt" ,"category","budget_id"];
+  // Define allowed filtering fields and process filter query
+  const allowedFilters:any = ["narration" ,"category","budget_id"];
 
   // Build filters for querying
   const filters :any= {  user_id }; 

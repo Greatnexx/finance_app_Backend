@@ -14,7 +14,8 @@ export const deleteBudget = asynchHandler(async (req:CustomRequest, res:Response
         throw new Error(`Budget not found for ID ${id}`);
     }
 
-    // Here, budget.user is likely a MongoDB ObjectId, while user_id (from req.user.id) might be a plain string
+    
+    
     if (budget.user_id.toString() !== user_id.toString()) {
         throw new Error("Unauthorized to delete this budget");
     }

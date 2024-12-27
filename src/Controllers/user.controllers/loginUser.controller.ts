@@ -9,15 +9,16 @@ import { Response } from "express";
 
 export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
 
-    const validation = await validator.validateObject({
-        email: "string|required",
-        password: "string|required|min:5"
-    },{...req?.body})
+    // const validation = await validator.validateObject({
+    //     email: "required|string",
+    //     password: "required|string"
 
-    if(validation.error){
-         res.status(403).json(validation)
-         return;
-    }
+    // },{...req?.body})
+
+    // if(validation.error){
+    //      res.status(403).json(validation)
+    //      return;
+    // }
 
     const {email,password} = req.body;
 
@@ -25,6 +26,7 @@ export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
     if(!user){
         throw new Error(ErrorCode.USER_NOT_FOUND)
     }
+   
 
     const isMatch = await bcrypt.compare(password,user.password);
 

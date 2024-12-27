@@ -8,9 +8,9 @@ import { Request, Response } from "express"
 export const createUser  = asynchHandler(async(req:Request,res:Response)=>{
     const validation = await validator.validateObject({
 
-        username: "string|required",
-        email: "string|required",
-        password: "string|required"
+        username: "required|string",
+        email: "required|string",
+        password: "required|string"
     },{...req?.body})
    
   
@@ -27,15 +27,15 @@ export const createUser  = asynchHandler(async(req:Request,res:Response)=>{
         throw new Error(ErrorCode.USER_ALREADY_EXISTS)
     }
  
-   const hasPassword =await bcrypt.hash(password,10)
+   const hashPassword =await bcrypt.hash(password,10)
 
     const newUser = await User.create({
         username,
         email,
-        password :hasPassword   
+        password :hashPassword   
     })
 
-    const savedUser = await newUser.save()
+    const savedUser = await newUser.save();
 
     if(!savedUser){
         throw new Error('Failed to save user')

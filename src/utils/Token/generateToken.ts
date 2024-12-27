@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import{ Schema} from 'mongoose'
 
 
 const generateToken = (_id:String) => {

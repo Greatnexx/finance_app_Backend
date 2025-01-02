@@ -9,16 +9,16 @@ import { Response } from "express";
 
 export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
 
-    // const validation = await validator.validateObject({
-    //     email: "required|string",
-    //     password: "required|string"
+    const validation = await validator.validateObject({
+        email: "required|string",
+        password: "required|string"
 
-    // },{...req?.body})
+    },{...req?.body})
 
-    // if(validation.error){
-    //      res.status(403).json(validation)
-    //      return;
-    // }
+    if(validation.error){
+         res.status(403).json(validation)
+         return;
+    }
 
     const {email,password} = req.body;
 

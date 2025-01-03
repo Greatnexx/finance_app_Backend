@@ -22,7 +22,7 @@ userSchema.virtual("transactions", {
     foreignField: "user_id"
 });
 userSchema.virtual("budgets", {
-    ref: "Budgets",
+    ref: "Budget",
     localField: "_id",
     foreignField: "user_id"
 });

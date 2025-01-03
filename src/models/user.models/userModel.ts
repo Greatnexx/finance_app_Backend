@@ -13,14 +13,22 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    
+    },   
+},{timestamps: true})
 
-    }
-}, { timestamps: true }); 
-userSchema.virtual("transactions",{
+userSchema.virtual("transactions", {
     ref: "Transaction",
     localField: "_id",
     foreignField: "user_id"
 });
-const User = mongoose.model('User', userSchema);
+userSchema.virtual("budgets", {
+    ref: "Budgets",
+    localField: "_id",
+    foreignField: "user_id"
+});
+ const User = mongoose.model('User', userSchema);
 export default User;
+
+
+
+

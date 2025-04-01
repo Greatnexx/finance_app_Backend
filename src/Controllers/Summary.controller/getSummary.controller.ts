@@ -9,7 +9,7 @@ export const getTransactionSummary = asyncHandler(async (req: CustomRequest, res
     const user_id = req?.user?._id;
 
     if (!user_id) {
-        res.status(401).json(ErrorCode.UNAUTHORIZED);
+        res.status(403).json(ErrorCode.UNAUTHORIZED);
         return;
     }
 

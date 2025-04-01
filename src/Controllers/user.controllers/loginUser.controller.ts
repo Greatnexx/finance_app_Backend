@@ -1,5 +1,4 @@
 import asynchHandler from "express-async-handler";
-import validator from "../../services/validationService";
 import User from "../../models/user.models/userModel";
 import bcrypt from "bcryptjs"
 import { ErrorCode } from "../../utils/Errors/Error";
@@ -9,16 +8,6 @@ import { Response } from "express";
 
 export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
 
-    const validation = await validator.validateObject({
-        email: "required|string",
-        password: "required|string"
-
-    },{...req?.body})
-
-    if(validation.error){
-         res.status(403).json(validation)
-         return;
-    }
 
     const {email,password} = req.body;
 
@@ -28,7 +17,7 @@ export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
     }
    
 
-    const isMatch = await bcrypt.compare(password,user.password);
+    const isMatch = await bcrypt.compareSync(password,user.password);
 
     if(!isMatch){
         throw new Error("Invalid Credentials")

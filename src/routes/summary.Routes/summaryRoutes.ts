@@ -1,7 +1,7 @@
 import { protect } from '../../middlewares/authMiddleWare';
-import { getTransactionSummary } from '../../Controllers/summary/getSummary.controller';
+import { getTransactionSummary } from '../../Controllers/Summary.controller/getSummary.controller';
 import express from 'express'
-import { getMonthlyBreakdown } from '../../Controllers/summary/getMonthlySummary.controller';
+import { getMonthlyBreakdown } from '../../Controllers/Summary.controller/getMonthlySummary.controller';
 const router = express.Router();
 
 router.get('/summary',protect,getTransactionSummary)

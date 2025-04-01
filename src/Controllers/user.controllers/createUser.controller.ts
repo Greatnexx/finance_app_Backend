@@ -1,24 +1,11 @@
 import asynchHandler from "express-async-handler"
-import validator from "../../services/validationService"
 import User from "../../models/user.models/userModel"
 import bcrypt from "bcryptjs"
 import { ErrorCode } from "../../utils/Errors/Error"
 import { Request, Response } from "express"
 
 export const createUser  = asynchHandler(async(req:Request,res:Response)=>{
-    const validation = await validator.validateObject({
-
-        username: "required|string",
-        email: "required|string",
-        password: "required|string"
-    },{...req?.body})
    
-  
-    if(validation.error){
-         res.status(403).json(validation)
-         return;
-    }
-
     const {username,email,password} = req.body;
 
     const existingUser = await User.findOne({email: email})

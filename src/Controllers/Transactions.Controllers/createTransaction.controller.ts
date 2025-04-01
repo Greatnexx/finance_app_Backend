@@ -20,7 +20,7 @@ export const createTransaction = asyncHandler(async(req:CustomRequest,res:Respon
     
 
     if(validation.error){
-         res.status(403).json(validation)
+         res.status(422).json(validation)
          return;
     }
 

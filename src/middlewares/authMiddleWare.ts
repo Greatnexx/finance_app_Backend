@@ -17,7 +17,7 @@ const protect = async (
       req.headers.authorization.startsWith("Bearer")
     ) {
       token = req.headers.authorization.split(" ")[1];
-      const secretKey = process.env.JWT_SECRET || 'your-secret-key'; // Use your secret key
+      const secretKey = process.env.JWT_SECRET || 'your-secret-key'; 
 
       // Verify the token
       const user: any = jwt.verify(token, secretKey);

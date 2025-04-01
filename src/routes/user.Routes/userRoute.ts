@@ -1,11 +1,13 @@
 import express from 'express'
-import { createUser } from '../../Controllers/user.controllers/createUser.controller';
-import { loginUser } from '../../Controllers/user.controllers/loginUser.controller';
+import { createUser } from '../../Controllers/User.controllers/createUser.controller';
+import { loginUser } from '../../Controllers/User.controllers/loginUser.controller';
+import { validateLogin, validateRegister } from 'Services/validation';
 
 const router = express.Router();
 
-router.post('/register',createUser)
-router.post('/login',loginUser)
+  
+router.post('/register',validateRegister,createUser)
+router.post('/login', validateLogin,loginUser)
 
 
 

@@ -1,14 +1,15 @@
 import express from 'express';
-import { createTransaction } from  '../../Controllers/Transactions.Controllers/createTransaction.controller';
+import { createTransaction } from  '../../Controllers/Transactions.controllers/createTransaction.controller';
 import { protect } from '../../middlewares/authMiddleWare';
-import { getAllTransactions } from '../../Controllers/Transactions.Controllers/getAllTransactions.controller';
-import { getSingleTransaction } from '../../Controllers/Transactions.Controllers/getSingleTransaction.controller';
-import { deleteTransaction } from '../../Controllers/Transactions.Controllers/deleteTransaction.controller';
-import { updateTransaction } from '../../Controllers/Transactions.Controllers/updateTransaction.controller';
+import { getAllTransactions } from '../../Controllers/Transactions.controllers/getAllTransactions.controller';
+import { getSingleTransaction } from '../../Controllers/Transactions.controllers/getSingleTransaction.controller';
+import { deleteTransaction } from '../../Controllers/Transactions.controllers/deleteTransaction.controller';
+import { updateTransaction } from '../../Controllers/Transactions.controllers/updateTransaction.controller';
+import { validateTransaction } from 'Services/validation';
 const router = express.Router();
 
 
-router.post("/",protect,createTransaction)
+router.post("/",protect,validateTransaction,createTransaction)
 router.get("/",protect,getAllTransactions)
 router.get("/:id",protect,getSingleTransaction)
 router.delete("/:id",protect,deleteTransaction)

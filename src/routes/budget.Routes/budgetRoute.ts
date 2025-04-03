@@ -5,7 +5,7 @@ import { deleteBudget } from '../../Controllers/Budgets.controller/deleteBudget.
 import { getAllBudgets } from '../../Controllers/Budgets.controller/getAllBudget.controller';
 import { getSingleBudget } from '../../Controllers/Budgets.controller/getSingleBudget.controller';
 import { updateBudget } from '../../Controllers/Budgets.controller/updateBudget.controller';
-import { validateBudget } from 'Services/validation';
+import { validateBudget } from '../../services/validation';
 const router = express.Router();
 
 router.post('/',protect,validateBudget,createBudget)

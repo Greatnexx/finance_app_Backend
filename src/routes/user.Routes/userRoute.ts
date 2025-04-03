@@ -1,7 +1,7 @@
 import express from 'express'
 import { createUser } from '../../Controllers/User.controllers/createUser.controller';
 import { loginUser } from '../../Controllers/User.controllers/loginUser.controller';
-import { validateLogin, validateRegister } from 'Services/validation';
+import { validateLogin, validateRegister } from '../../services/validation';
 
 const router = express.Router();
 

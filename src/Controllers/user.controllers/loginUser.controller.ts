@@ -5,6 +5,7 @@ import { ErrorCode } from "../../utils/Errors/Error";
 import generateToken from "../../utils/Token/generateToken";
 import { CustomRequest } from "Interfaces/userInterface/user.interface";
 import { Response } from "express";
+import redis from "../../config/redis";
 
 export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
 
@@ -17,13 +18,18 @@ export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
     }
    
 
-    const isMatch = await bcrypt.compareSync(password,user.password);
+    const isMatch = await bcrypt.compare(password,user.password);
 
     if(!isMatch){
         throw new Error("Invalid Credentials")
     }
 
     const accessToken = generateToken(user?._id.toString())
+
+    // Store the token in Redis (e.g., auth_token:{userId})
+  const redisKey = `auth_token:${user._id}`;
+  await redis.set(redisKey, accessToken, "EX", 3600); // EX sets expiration time in seconds (1 hour)
+
     res.status(200).json({
         success: true,
         data: {
@@ -32,7 +38,7 @@ export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
             email: user.email,
             token: accessToken,
         },
-        message:"Login Succefull"
+        message:"Login Successfull"
 
     })
 })

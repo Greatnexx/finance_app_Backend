@@ -5,7 +5,7 @@ import { getAllTransactions } from '../../Controllers/Transactions.controllers/g
 import { getSingleTransaction } from '../../Controllers/Transactions.controllers/getSingleTransaction.controller';
 import { deleteTransaction } from '../../Controllers/Transactions.controllers/deleteTransaction.controller';
 import { updateTransaction } from '../../Controllers/Transactions.controllers/updateTransaction.controller';
-import { validateTransaction } from 'Services/validation';
+import { validateTransaction } from '../../services/validation';
 const router = express.Router();
 
 

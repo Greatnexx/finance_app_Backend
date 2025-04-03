@@ -7,22 +7,6 @@ import { Response } from "express";
 
 export const createTransaction = asyncHandler(async(req:CustomRequest,res:Response)=>{
 
-    const validation = await validator.validateObject({
-
-        amount: "numeric|required",
-        category: "string|required",
-        narration: "string|required",
-        budget_id: "string",
-        type: "string|required"
-
-    },{...req?.body})
-
-    
-
-    if(validation.error){
-         res.status(422).json(validation)
-         return;
-    }
 
     const {amount, category, narration, budget_id,type} = req.body;
     const user_id = req?.user?._id;

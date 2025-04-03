@@ -3,6 +3,7 @@ import { CustomRequest } from "../interfaces/userInterface/user.interface";
 import jwt from "jsonwebtoken";
 import { ErrorCode } from "../utils/Errors/Error";
 import { getErrorCode } from "../utils/Errors/Error";
+import redis from "../config/redis";
 
 const protect = async (
   req: CustomRequest,
@@ -21,6 +22,12 @@ const protect = async (
 
       // Verify the token
       const user: any = jwt.verify(token, secretKey);
+
+      const redisToken = await redis.get(`auth_token:${user._id}`)
+
+      if(!redisToken){
+       res.status(401).json({message:'Invalid Token or expired'});
+      }
       req.user = user;
 
       return next();

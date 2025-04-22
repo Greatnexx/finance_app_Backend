@@ -18,9 +18,12 @@ const protect = async (
       req.headers.authorization.startsWith("Bearer")
     ) {
       token = req.headers.authorization.split(" ")[1];
-      const secretKey = process.env.JWT_SECRET || 'your-secret-key'; 
+      const secretKey = process.env.JWT_SECRET; 
 
       // Verify the token
+      if (!secretKey) {
+        throw new Error("JWT_SECRET is not defined in environment variables");
+      }
       const user: any = jwt.verify(token, secretKey);
 
       const redisToken = await redis.get(`auth_token:${user._id}`)

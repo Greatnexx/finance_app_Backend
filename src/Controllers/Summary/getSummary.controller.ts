@@ -9,7 +9,7 @@ export const getTransactionSummary = asyncHandler(async (req: CustomRequest, res
     const user_id = req?.user?._id;
 
     if (!user_id) {
-        res.status(403).json(ErrorCode.UNAUTHORIZED);
+        res.status(401).json(ErrorCode.UNAUTHORIZED);
         return;
     }
 
@@ -56,7 +56,7 @@ export const getTransactionSummary = asyncHandler(async (req: CustomRequest, res
 
     // Calculate remaining budget across all budgets
     let totalBudgetAmount = 0;
-    let totalSpentAmount = totalExpensesAmount; 
+    const totalSpentAmount = totalExpensesAmount; 
 
     budgets.forEach(budget => {
         totalBudgetAmount += budget.total_amount; 

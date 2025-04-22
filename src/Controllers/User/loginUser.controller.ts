@@ -28,7 +28,7 @@ export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
 
     // Store the token in Redis (e.g., auth_token:{userId})
   const redisKey = `auth_token:${user._id}`;
-  await redis.set(redisKey, accessToken, "EX", 3600); // EX sets expiration time in seconds (1 hour)
+  await redis.set(redisKey, accessToken, "EX", process.env.EXP_TIME || "3600"); // EX sets expiration time in seconds (1 hour)
 
     res.status(200).json({
         success: true,
@@ -38,7 +38,7 @@ export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
             email: user.email,
             token: accessToken,
         },
-        message:"Login Successfull"
+        message:"Login Successful"
 
     })
 })

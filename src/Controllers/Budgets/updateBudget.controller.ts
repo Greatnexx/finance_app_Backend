@@ -2,11 +2,16 @@ import { Response } from "express";
 import { CustomRequest } from "../../interfaces/userInterface/user.interface";
 import Budget from "../../models/budgetModel/budgetModel";
 import asyncHandler from "express-async-handler";
+import { ErrorCode } from "Utils/Errors/Error";
 
 export const updateBudget = asyncHandler(async (req:CustomRequest, res:Response) => {
   const { id } = req.params;
-  const user_id = req?.user?._id!;
+  const user= req.user
+  if(!user?._id){
+    throw new Error(ErrorCode.UNAUTHORIZED)
+  }
 
+  const user_id = user._id
   const allowedUpdates = ["title", "total_amount", "duration"];
 
   // Verify the body is not empty

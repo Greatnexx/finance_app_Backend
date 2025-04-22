@@ -1,10 +1,10 @@
 import express from 'express';
-import { createBudget } from '../../Controllers/Budgets.controller/createBudget.controller';
+import { createBudget } from '../../Controllers/Budgets/createBudget.controller';
 import {protect} from "../../middlewares/authMiddleWare"
-import { deleteBudget } from '../../Controllers/Budgets.controller/deleteBudget.controller';
-import { getAllBudgets } from '../../Controllers/Budgets.controller/getAllBudget.controller';
-import { getSingleBudget } from '../../Controllers/Budgets.controller/getSingleBudget.controller';
-import { updateBudget } from '../../Controllers/Budgets.controller/updateBudget.controller';
+import { deleteBudget } from '../../Controllers/Budgets/deleteBudget.controller';
+import { getAllBudgets } from '../../Controllers/Budgets/getAllBudget.controller';
+import { getSingleBudget } from '../../Controllers/Budgets/getSingleBudget.controller';
+import { updateBudget } from '../../Controllers/Budgets/updateBudget.controller';
 import { validateBudget } from '../../services/validation';
 const router = express.Router();
 

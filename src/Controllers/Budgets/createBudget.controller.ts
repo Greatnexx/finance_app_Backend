@@ -7,12 +7,13 @@ import { Response } from "express";
 
 export const createBudget = asynchHandler(async (req:CustomRequest, res:Response) => {
     
-    const user_id = req?.user?._id!;
-    const { title, total_amount, duration } = req.body;
+  const { title, total_amount, duration } = req.body;
+  const user = req.user; 
   
-    if (!user_id) {
+    if (!user?._id) {
       throw new Error(ErrorCode.UNAUTHORIZED);
     }
+    const user_id= user._id
   
     const newBudget = await Budget.create({
       title,

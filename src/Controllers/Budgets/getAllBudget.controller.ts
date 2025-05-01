@@ -1,9 +1,9 @@
 import asyncHandler from "express-async-handler";
-import Budget from "../../models/budgetModel/budgetModel";
+import Budget from "../../models/budgetModel";
 import { CustomRequest } from "../../interfaces/userInterface/user.interface";
 import { Response } from "express";
 
-export const getAllBudgets = asyncHandler(async (req: CustomRequest, res: Response) => {
+export const getAllBudgets = (async (req: CustomRequest, res: Response) => {
   const { sort, page = 1, limit = 10 } = req.query as Record<string, string | number | boolean>;
 
   const pageNumber = Number(page);

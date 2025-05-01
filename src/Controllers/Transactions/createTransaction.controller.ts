@@ -1,11 +1,9 @@
-import asyncHandler from "express-async-handler";
-import validator from "../../services/validationService"
-import Transaction from "../../models/transactionModel/transactionModel";
+import Transaction from "../../models/transactionModel";
 import { ErrorCode } from "../../utils/Errors/Error";
 import { CustomRequest } from "../../interfaces/userInterface/user.interface";
 import { Response } from "express";
 
-export const createTransaction = asyncHandler(async(req:CustomRequest,res:Response)=>{
+export const createTransaction = (async(req:CustomRequest,res:Response)=>{
 
 
     const {amount, category, narration, budget_id,type} = req.body;
@@ -14,7 +12,6 @@ export const createTransaction = asyncHandler(async(req:CustomRequest,res:Respon
     if(!user_id){
         throw new Error(ErrorCode.UNAUTHORIZED)
     }
-
 
     const transaction  = await Transaction.create({
         amount,

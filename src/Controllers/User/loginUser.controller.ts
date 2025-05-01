@@ -1,5 +1,5 @@
 import asynchHandler from "express-async-handler";
-import User from "../../models/user.models/userModel";
+import User from "../../models/userModel";
 import bcrypt from "bcryptjs"
 import { ErrorCode } from "../../utils/Errors/Error";
 import generateToken from "../../utils/Token/generateToken";
@@ -7,7 +7,7 @@ import { CustomRequest } from "Interfaces/userInterface/user.interface";
 import { Response } from "express";
 import redis from "../../config/redis";
 
-export const loginUser = asynchHandler(async(req:CustomRequest,res:Response)=>{
+export const loginUser = (async(req:CustomRequest,res:Response)=>{
 
 
     const {email,password} = req.body;

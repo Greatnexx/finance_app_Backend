@@ -31,6 +31,10 @@ const transactionSchema = new mongoose.Schema(
       required: true,
       enum: ['expense', 'income'], 
     },
+    isDeleted: {
+      type: Boolean,
+      default: false, 
+    },
   },
   {
     timestamps: true, 

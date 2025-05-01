@@ -1,3 +1,4 @@
-export {default as BudgetRoutes} from "./budget.Routes/budgetRoute"
-export {default as SummaryRoutes} from  "./summary.Routes/summaryRoutes"
-export {default as TransactionRoutes} from "./transaction.Routes/transactionRoute"
+export {default as BudgetRoutes} from "./budgetRoute"
+export {default as SummaryRoutes} from  "./summaryRoutes"
+export {default as TransactionRoutes} from "./transactionRoute"
+export {default as UserRoutes} from "./userRoute"

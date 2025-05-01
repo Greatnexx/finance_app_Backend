@@ -1,10 +1,10 @@
 import asynchHandler from "express-async-handler"
-import User from "../../models/user.models/userModel"
+import User from "../../models/userModel"
 import bcrypt from "bcryptjs"
 import { ErrorCode } from "../../utils/Errors/Error"
 import { Request, Response } from "express"
 
-export const createUser  = asynchHandler(async(req:Request,res:Response)=>{
+export const createUser  = (async(req:Request,res:Response)=>{
    
     const {username,email,password} = req.body;
 

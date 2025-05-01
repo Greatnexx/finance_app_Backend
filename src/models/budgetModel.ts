@@ -15,6 +15,10 @@ const budgetSchema = new mongoose.Schema({
         enum: ['weekly', 'monthly', 'yearly'],
         default: "weekly",
     },
+    isDeleted: {
+        type: Boolean,
+        default: false,
+    },
     user_id: {
         type: mongoose.Schema.Types.ObjectId, ref: 'User',
         required: true

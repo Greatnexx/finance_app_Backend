@@ -1,11 +1,10 @@
-import asyncHandler from "express-async-handler";
-import Transaction from "../../models/transactionModel/transactionModel";
-import Budget from "../../models/budgetModel/budgetModel"; 
+import Transaction from "../../models/transactionModel";
+import Budget from "../../models/budgetModel"; 
 import { CustomRequest } from "../../interfaces/userInterface/user.interface";
 import { Response } from "express";
 import { ErrorCode } from "../../utils/Errors/Error";
 
-export const getTransactionSummary = asyncHandler(async (req: CustomRequest, res: Response) => {
+export const getTransactionSummary = (async (req: CustomRequest, res: Response) => {
     const user_id = req?.user?._id;
 
     if (!user_id) {

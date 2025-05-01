@@ -1,9 +1,8 @@
-import asynchHandler from "express-async-handler"
-import Transaction from "../../models/transactionModel/transactionModel";
+import Transaction from "../../models/transactionModel";
 import { CustomRequest } from "../../interfaces/userInterface/user.interface";
 import { Response } from "express";
 
-export const deleteTransaction = asynchHandler(async (req:CustomRequest, res:Response) => {
+export const deleteTransaction = (async (req:CustomRequest, res:Response) => {
     const { id } = req.params;
 
     const user_id = req?.user?._id!;
@@ -19,8 +18,15 @@ export const deleteTransaction = asynchHandler(async (req:CustomRequest, res:Res
         throw new Error("Unauthorized to delete this transaction");
     }
 
-    const deletedTransaction = await Transaction.findByIdAndDelete(id);
+    // soft delete the transaction
+    const deletedTransaction = await Transaction.findByIdAndUpdate(
+        id,
+        { isDeleted: true },
+        { new: true }
+    );
 
+
+    
     res.status(200).json({
         success: true,
         data: deletedTransaction,

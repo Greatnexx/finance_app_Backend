@@ -1,7 +1,6 @@
-import asynchHandler from "express-async-handler";
-import Budget from "../../models/budgetModel/budgetModel";
+import Budget from "../../models/budgetModel";
 
-export const getSingleBudget = asynchHandler(async(req,res)=>{
+export const getSingleBudget = (async(req,res)=>{
     const {id}=req.params
 
     const budget = await Budget.findById(id)

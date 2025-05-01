@@ -1,10 +1,10 @@
 import asyncHandler from "express-async-handler";
-import Transaction from "../../models/transactionModel/transactionModel";
+import Transaction from "../../models/transactionModel";
 import { CustomRequest } from "../../interfaces/userInterface/user.interface";
 import { Response } from "express";
 import { ErrorCode } from "../../utils/Errors/Error";
 
-export const getMonthlyBreakdown = asyncHandler(async (req: CustomRequest, res: Response) => {
+export const getMonthlyBreakdown = (async (req: CustomRequest, res: Response) => {
     const user_id = req?.user?._id;
 
     if (!user_id) {

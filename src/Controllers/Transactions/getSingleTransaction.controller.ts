@@ -1,7 +1,6 @@
-import asynchHandler from "express-async-handler";
-import Transaction from "../../models/transactionModel/transactionModel";
+import Transaction from "../../models/transactionModel";
 
-export const getSingleTransaction = asynchHandler(async(req,res)=>{
+export const getSingleTransaction = (async(req,res)=>{
     const {id}=req.params
 
     const transaction = await Transaction.findById(id)

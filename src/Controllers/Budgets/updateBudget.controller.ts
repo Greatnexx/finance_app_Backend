@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { CustomRequest } from "../../interfaces/userInterface/user.interface";
-import Budget from "../../models/budgetModel/budgetModel";
+import Budget from "../../models/budgetModel";
 import asyncHandler from "express-async-handler";
 import { ErrorCode } from "Utils/Errors/Error";
 

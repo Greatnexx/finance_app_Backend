@@ -1,4 +1,4 @@
-import { protect } from '../../middlewares/authMiddleWare';
+import { protect } from '../middlewares/authMiddleWare';
 import { getTransactionSummary } from '../../Controllers/Summary.controller/getSummary.controller';
 import express from 'express'
 import { getMonthlyBreakdown } from '../../Controllers/Summary.controller/getMonthlySummary.controller';

@@ -1,9 +1,8 @@
-import asyncHandler from "express-async-handler";
-import Transaction from "../../models/transactionModel/transactionModel";
+import Transaction from "../../models/transactionModel";
 import { CustomRequest } from "../../interfaces/userInterface/user.interface";
 import { Response } from "express";
 
-export const getAllTransactions = asyncHandler(async (req:CustomRequest, res:Response) => {
+export const getAllTransactions = (async (req:CustomRequest, res:Response) => {
   const { sort, page = 1, limit = 10 } = req.query as Record<string, string | number | boolean>;;
 
   // Default page and limit numbers
@@ -17,7 +16,7 @@ export const getAllTransactions = asyncHandler(async (req:CustomRequest, res:Res
   const allowedFilters:any = ["narration" ,"category","budget_id"];
 
   // Build filters for querying
-  const filters :any= {  user_id }; 
+  const filters :any= {  user_id ,isDeleted:false}; 
   for (const filter of allowedFilters) {
     if (req.body && req.body[filter]) {
       filters[filter] = req.body[filter];

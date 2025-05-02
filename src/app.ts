@@ -1,10 +1,10 @@
 import express from 'express'
 import cors from "cors"
 import { errorHandler, notFound } from './middlewares/errorHandler';
-import userRoutes from './routes/user.Routes/userRoute';
-import BudgetRoutes  from './routes/budget.Routes/budgetRoute';
-import  TransactionRoutes  from './routes/transaction.Routes/transactionRoute'
-import  SummaryRoutes  from './routes/summary.Routes/summaryRoutes'
+import userRoutes from './routes/userRoute';
+import BudgetRoutes  from './routes/budgetRoute';
+import  TransactionRoutes  from './routes/transactionRoute'
+import  SummaryRoutes  from './routes/summaryRoutes'
 
 const app = express();
 app.use(express.json());
